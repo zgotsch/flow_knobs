@@ -4,9 +4,12 @@ import IntersectionType from "../IntersectionType";
 import ObjectType from "../ObjectType";
 import NumberType from "../NumberType";
 import StringType from "../StringType";
+import {mockSeedRandomEach} from "../../../mockSeedRandom";
 
 describe("IntersectionType", () => {
   describe("arbitrary", () => {
+    mockSeedRandomEach(42);
+
     it("errors if no branches are specified", () => {
       const t = new IntersectionType([]);
       expect(() => t.arbitrary()).toThrow(
@@ -33,8 +36,8 @@ describe("IntersectionType", () => {
       const t = new IntersectionType([numberFieldObject, stringFieldObject]);
 
       expect(t.arbitrary()).toEqual({
-        numberField: 42,
-        stringField: "a random string",
+        numberField: 37454,
+        stringField: "quibusdam hic sit",
       });
     });
 

@@ -1,10 +1,16 @@
 // @flow
 
+import faker from "faker";
+
+import {mockSeedRandomEach} from "../../../mockSeedRandom";
+
 import TupleType from "../TupleType";
 import NumberType from "../NumberType";
 import StringType from "../StringType";
 
 describe("TupleType", () => {
+  mockSeedRandomEach(42);
+
   describe("with empty types array", () => {
     describe("arbitrary", () => {
       it("creates an empty tuple (JS array)", () => {
@@ -18,7 +24,7 @@ describe("TupleType", () => {
       const n = new NumberType();
       const s = new StringType();
       const t = new TupleType([n, n, s]);
-      expect(t.arbitrary()).toEqual([42, 42, "a random string"]);
+      expect(t.arbitrary()).toEqual([37454, 79654, "hic sit minus"]);
     });
   });
 });

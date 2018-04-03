@@ -1,11 +1,15 @@
 // @flow
 
+import {mockSeedRandomEach} from "../../../mockSeedRandom";
+
 import ObjectType from "../ObjectType";
 import NumberType from "../NumberType";
 import StringType from "../StringType";
 
 describe("ObjectType", () => {
   describe("arbitrary", () => {
+    mockSeedRandomEach(42);
+
     it("creates empty object if given an empty description", () => {
       const t = new ObjectType({});
       expect(t.arbitrary()).toEqual({});
@@ -19,8 +23,8 @@ describe("ObjectType", () => {
         stringField: stringType,
       });
       expect(t.arbitrary()).toEqual({
-        numberField: 42,
-        stringField: "a random string",
+        numberField: 37454,
+        stringField: "quibusdam hic sit",
       });
     });
   });
