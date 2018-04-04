@@ -31,8 +31,12 @@ describe("IntersectionType", () => {
     });
 
     it("creates a value of the Flow intersection type when the branches are disjoint", () => {
-      const numberFieldObject = new ObjectType({numberField: new NumberType()});
-      const stringFieldObject = new ObjectType({stringField: new StringType()});
+      const numberFieldObject = new ObjectType({
+        numberField: [new NumberType(), false],
+      });
+      const stringFieldObject = new ObjectType({
+        stringField: [new StringType(), false],
+      });
       const t = new IntersectionType([numberFieldObject, stringFieldObject]);
 
       expect(t.arbitrary()).toEqual({
@@ -43,5 +47,20 @@ describe("IntersectionType", () => {
 
     // This doesn't work in Flow due to a bug but it's described by the docs
     xit("creates a value of the Flow intersection type when the branches are overlapping, intersecting overlapping fields", () => {});
+  });
+
+  describe("check", () => {
+    it("checks that the target is an instance of each type", () => {
+      const numberFieldObject = new ObjectType({
+        numberField: [new NumberType(), false],
+      });
+      const stringFieldObject = new ObjectType({
+        stringField: [new StringType(), false],
+      });
+      const t = new IntersectionType([numberFieldObject, stringFieldObject]);
+
+      expect(t.check({numberField: 42})).toBe(false);
+      expect(t.check({numberField: 42, stringField: "zach"})).toBe(true);
+    });
   });
 });

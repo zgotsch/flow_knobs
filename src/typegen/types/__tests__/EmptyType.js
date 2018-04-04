@@ -11,4 +11,11 @@ describe("EmptyType", () => {
       );
     });
   });
+
+  describe("check", () => {
+    it("returns false, there is no instantiation of the empty type", () => {
+      const t = new EmptyType();
+      expect(t.check(4)).toBe(false);
+    });
+  });
 });

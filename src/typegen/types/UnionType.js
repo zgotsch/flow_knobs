@@ -18,4 +18,13 @@ export default class UnionType extends Type<any> {
     const index = Math.floor(Math.random() * this.types.length);
     return this.types[index].arbitrary();
   }
+
+  check(target: any): boolean {
+    for (let i = 0; i < this.types.length; i += 1) {
+      if (this.types[i].check(target)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

@@ -16,7 +16,7 @@ export function unmockSeedRandom(): void {
   global.Math = originalMath;
 }
 
-export function mockSeedRandomEach(seed?: number): void {
+export function mockSeedRandomEach(seed: number): void {
   beforeEach(() => {
     mockSeedRandom(seed);
   });

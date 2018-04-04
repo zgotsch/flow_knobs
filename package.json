@@ -16,6 +16,7 @@
     "flow": "flow"
   },
   "devDependencies": {
+    "babel-flow-types": "^1.2.3",
     "faker": "^4.1.0",
     "jest-mock-random": "^1.0.2",
     "seedrandom": "^2.4.3"

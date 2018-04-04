@@ -18,4 +18,18 @@ export default class ArrayType<T> extends Type<Array<T>> {
     }
     return generated;
   }
+
+  check(target: any): boolean {
+    if (!Array.isArray(target)) {
+      return false;
+    }
+
+    for (let i = 0; i < target.length; i += 1) {
+      if (!this.elementType.check(target[i])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }

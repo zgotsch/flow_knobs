@@ -27,4 +27,13 @@ export default class IntersectionType extends Type<any> {
 
     return Object.assign.call(null, {}, ...this.types.map(t => t.arbitrary()));
   }
+
+  check(target: any): boolean {
+    for (let i = 0; i < this.types.length; i += 1) {
+      if (!this.types[i].check(target)) {
+        return false;
+      }
+    }
+    return true;
+  }
 }

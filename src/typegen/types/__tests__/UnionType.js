@@ -53,4 +53,16 @@ describe("UnionType", () => {
       resetMockRandom();
     });
   });
+
+  describe("check", () => {
+    it("checks that the target matches at least one of the branches", () => {
+      const nullType = new NullType();
+      const voidType = new VoidType();
+      const t = new UnionType([nullType, voidType]);
+
+      expect(t.check(null)).toBe(true);
+      expect(t.check(undefined)).toBe(true);
+      expect(t.check("anything else")).toBe(false);
+    });
+  });
 });

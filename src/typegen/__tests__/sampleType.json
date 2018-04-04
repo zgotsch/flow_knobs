@@ -1,0 +1,753 @@
+{
+  "type": "ObjectTypeAnnotation",
+  "start": 283,
+  "end": 556,
+  "loc": {
+    "start": {
+      "line": 15,
+      "column": 14
+    },
+    "end": {
+      "line": 26,
+      "column": 1
+    }
+  },
+  "callProperties": [],
+  "properties": [
+    {
+      "type": "ObjectTypeProperty",
+      "start": 287,
+      "end": 307,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 2
+        },
+        "end": {
+          "line": 16,
+          "column": 22
+        }
+      },
+      "key": {
+        "type": "Identifier",
+        "start": 288,
+        "end": 299,
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 3
+          },
+          "end": {
+            "line": 16,
+            "column": 14
+          },
+          "identifierName": "numberField"
+        },
+        "name": "numberField"
+      },
+      "static": false,
+      "kind": "init",
+      "value": {
+        "type": "NumberTypeAnnotation",
+        "start": 301,
+        "end": 307,
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 16
+          },
+          "end": {
+            "line": 16,
+            "column": 22
+          }
+        }
+      },
+      "variance": {
+        "type": "Variance",
+        "start": 287,
+        "end": 288,
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 2
+          },
+          "end": {
+            "line": 16,
+            "column": 3
+          }
+        },
+        "kind": "plus"
+      },
+      "optional": false
+    },
+    {
+      "type": "ObjectTypeProperty",
+      "start": 311,
+      "end": 331,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 2
+        },
+        "end": {
+          "line": 17,
+          "column": 22
+        }
+      },
+      "key": {
+        "type": "Identifier",
+        "start": 312,
+        "end": 323,
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 3
+          },
+          "end": {
+            "line": 17,
+            "column": 14
+          },
+          "identifierName": "stringField"
+        },
+        "name": "stringField"
+      },
+      "static": false,
+      "kind": "init",
+      "value": {
+        "type": "StringTypeAnnotation",
+        "start": 325,
+        "end": 331,
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 16
+          },
+          "end": {
+            "line": 17,
+            "column": 22
+          }
+        }
+      },
+      "variance": {
+        "type": "Variance",
+        "start": 311,
+        "end": 312,
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 2
+          },
+          "end": {
+            "line": 17,
+            "column": 3
+          }
+        },
+        "kind": "minus"
+      },
+      "optional": false
+    },
+    {
+      "type": "ObjectTypeProperty",
+      "start": 335,
+      "end": 353,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 2
+        },
+        "end": {
+          "line": 18,
+          "column": 20
+        }
+      },
+      "key": {
+        "type": "Identifier",
+        "start": 335,
+        "end": 348,
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 2
+          },
+          "end": {
+            "line": 18,
+            "column": 15
+          },
+          "identifierName": "nullableField"
+        },
+        "name": "nullableField"
+      },
+      "static": false,
+      "kind": "init",
+      "value": {
+        "type": "NullableTypeAnnotation",
+        "start": 350,
+        "end": 353,
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 17
+          },
+          "end": {
+            "line": 18,
+            "column": 20
+          }
+        },
+        "typeAnnotation": {
+          "type": "TupleTypeAnnotation",
+          "start": 351,
+          "end": 353,
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 18
+            },
+            "end": {
+              "line": 18,
+              "column": 20
+            }
+          },
+          "types": []
+        }
+      },
+      "variance": null,
+      "optional": false
+    },
+    {
+      "type": "ObjectTypeProperty",
+      "start": 357,
+      "end": 399,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 2
+        },
+        "end": {
+          "line": 21,
+          "column": 3
+        }
+      },
+      "key": {
+        "type": "Identifier",
+        "start": 357,
+        "end": 368,
+        "loc": {
+          "start": {
+            "line": 19,
+            "column": 2
+          },
+          "end": {
+            "line": 19,
+            "column": 13
+          },
+          "identifierName": "objectField"
+        },
+        "name": "objectField"
+      },
+      "static": false,
+      "kind": "init",
+      "value": {
+        "type": "ObjectTypeAnnotation",
+        "start": 370,
+        "end": 399,
+        "loc": {
+          "start": {
+            "line": 19,
+            "column": 15
+          },
+          "end": {
+            "line": 21,
+            "column": 3
+          }
+        },
+        "callProperties": [],
+        "properties": [
+          {
+            "type": "ObjectTypeProperty",
+            "start": 376,
+            "end": 394,
+            "loc": {
+              "start": {
+                "line": 20,
+                "column": 4
+              },
+              "end": {
+                "line": 20,
+                "column": 22
+              }
+            },
+            "key": {
+              "type": "Identifier",
+              "start": 376,
+              "end": 386,
+              "loc": {
+                "start": {
+                  "line": 20,
+                  "column": 4
+                },
+                "end": {
+                  "line": 20,
+                  "column": 14
+                },
+                "identifierName": "innerField"
+              },
+              "name": "innerField"
+            },
+            "static": false,
+            "kind": "init",
+            "value": {
+              "type": "NumberTypeAnnotation",
+              "start": 388,
+              "end": 394,
+              "loc": {
+                "start": {
+                  "line": 20,
+                  "column": 16
+                },
+                "end": {
+                  "line": 20,
+                  "column": 22
+                }
+              }
+            },
+            "variance": null,
+            "optional": false
+          }
+        ],
+        "indexers": [],
+        "exact": false
+      },
+      "variance": null,
+      "optional": false
+    },
+    {
+      "type": "ObjectTypeProperty",
+      "start": 403,
+      "end": 431,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 2
+        },
+        "end": {
+          "line": 22,
+          "column": 30
+        }
+      },
+      "key": {
+        "type": "Identifier",
+        "start": 403,
+        "end": 413,
+        "loc": {
+          "start": {
+            "line": 22,
+            "column": 2
+          },
+          "end": {
+            "line": 22,
+            "column": 12
+          },
+          "identifierName": "tupleField"
+        },
+        "name": "tupleField"
+      },
+      "static": false,
+      "kind": "init",
+      "value": {
+        "type": "TupleTypeAnnotation",
+        "start": 415,
+        "end": 431,
+        "loc": {
+          "start": {
+            "line": 22,
+            "column": 14
+          },
+          "end": {
+            "line": 22,
+            "column": 30
+          }
+        },
+        "types": [
+          {
+            "type": "NumberTypeAnnotation",
+            "start": 416,
+            "end": 422,
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 15
+              },
+              "end": {
+                "line": 22,
+                "column": 21
+              }
+            }
+          },
+          {
+            "type": "StringTypeAnnotation",
+            "start": 424,
+            "end": 430,
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 23
+              },
+              "end": {
+                "line": 22,
+                "column": 29
+              }
+            }
+          }
+        ]
+      },
+      "variance": null,
+      "optional": false
+    },
+    {
+      "type": "ObjectTypeProperty",
+      "start": 435,
+      "end": 469,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 2
+        },
+        "end": {
+          "line": 23,
+          "column": 36
+        }
+      },
+      "key": {
+        "type": "Identifier",
+        "start": 435,
+        "end": 445,
+        "loc": {
+          "start": {
+            "line": 23,
+            "column": 2
+          },
+          "end": {
+            "line": 23,
+            "column": 12
+          },
+          "identifierName": "unionField"
+        },
+        "name": "unionField"
+      },
+      "static": false,
+      "kind": "init",
+      "value": {
+        "type": "UnionTypeAnnotation",
+        "start": 447,
+        "end": 469,
+        "loc": {
+          "start": {
+            "line": 23,
+            "column": 14
+          },
+          "end": {
+            "line": 23,
+            "column": 36
+          }
+        },
+        "types": [
+          {
+            "type": "NumberTypeAnnotation",
+            "start": 447,
+            "end": 453,
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 14
+              },
+              "end": {
+                "line": 23,
+                "column": 20
+              }
+            }
+          },
+          {
+            "type": "StringTypeAnnotation",
+            "start": 456,
+            "end": 462,
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 23
+              },
+              "end": {
+                "line": 23,
+                "column": 29
+              }
+            }
+          },
+          {
+            "type": "VoidTypeAnnotation",
+            "start": 465,
+            "end": 469,
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 32
+              },
+              "end": {
+                "line": 23,
+                "column": 36
+              }
+            }
+          }
+        ]
+      },
+      "variance": null,
+      "optional": false
+    },
+    {
+      "type": "ObjectTypeProperty",
+      "start": 473,
+      "end": 528,
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 2
+        },
+        "end": {
+          "line": 24,
+          "column": 57
+        }
+      },
+      "key": {
+        "type": "Identifier",
+        "start": 473,
+        "end": 490,
+        "loc": {
+          "start": {
+            "line": 24,
+            "column": 2
+          },
+          "end": {
+            "line": 24,
+            "column": 19
+          },
+          "identifierName": "intersectionField"
+        },
+        "name": "intersectionField"
+      },
+      "static": false,
+      "kind": "init",
+      "value": {
+        "type": "IntersectionTypeAnnotation",
+        "start": 492,
+        "end": 528,
+        "loc": {
+          "start": {
+            "line": 24,
+            "column": 21
+          },
+          "end": {
+            "line": 24,
+            "column": 57
+          }
+        },
+        "types": [
+          {
+            "type": "ObjectTypeAnnotation",
+            "start": 492,
+            "end": 508,
+            "loc": {
+              "start": {
+                "line": 24,
+                "column": 21
+              },
+              "end": {
+                "line": 24,
+                "column": 37
+              }
+            },
+            "callProperties": [],
+            "properties": [
+              {
+                "type": "ObjectTypeProperty",
+                "start": 494,
+                "end": 506,
+                "loc": {
+                  "start": {
+                    "line": 24,
+                    "column": 23
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 35
+                  }
+                },
+                "key": {
+                  "type": "Identifier",
+                  "start": 494,
+                  "end": 498,
+                  "loc": {
+                    "start": {
+                      "line": 24,
+                      "column": 23
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 27
+                    },
+                    "identifierName": "left"
+                  },
+                  "name": "left"
+                },
+                "static": false,
+                "kind": "init",
+                "value": {
+                  "type": "StringTypeAnnotation",
+                  "start": 500,
+                  "end": 506,
+                  "loc": {
+                    "start": {
+                      "line": 24,
+                      "column": 29
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 35
+                    }
+                  }
+                },
+                "variance": null,
+                "optional": false
+              }
+            ],
+            "indexers": [],
+            "exact": true
+          },
+          {
+            "type": "ObjectTypeAnnotation",
+            "start": 511,
+            "end": 528,
+            "loc": {
+              "start": {
+                "line": 24,
+                "column": 40
+              },
+              "end": {
+                "line": 24,
+                "column": 57
+              }
+            },
+            "callProperties": [],
+            "properties": [
+              {
+                "type": "ObjectTypeProperty",
+                "start": 513,
+                "end": 526,
+                "loc": {
+                  "start": {
+                    "line": 24,
+                    "column": 42
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 55
+                  }
+                },
+                "key": {
+                  "type": "Identifier",
+                  "start": 513,
+                  "end": 518,
+                  "loc": {
+                    "start": {
+                      "line": 24,
+                      "column": 42
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 47
+                    },
+                    "identifierName": "right"
+                  },
+                  "name": "right"
+                },
+                "static": false,
+                "kind": "init",
+                "value": {
+                  "type": "NumberTypeAnnotation",
+                  "start": 520,
+                  "end": 526,
+                  "loc": {
+                    "start": {
+                      "line": 24,
+                      "column": 49
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 55
+                    }
+                  }
+                },
+                "variance": null,
+                "optional": false
+              }
+            ],
+            "indexers": [],
+            "exact": true
+          }
+        ]
+      },
+      "variance": null,
+      "optional": false
+    },
+    {
+      "type": "ObjectTypeProperty",
+      "start": 532,
+      "end": 554,
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 2
+        },
+        "end": {
+          "line": 25,
+          "column": 24
+        }
+      },
+      "key": {
+        "type": "Identifier",
+        "start": 532,
+        "end": 545,
+        "loc": {
+          "start": {
+            "line": 25,
+            "column": 2
+          },
+          "end": {
+            "line": 25,
+            "column": 15
+          },
+          "identifierName": "optionalField"
+        },
+        "name": "optionalField"
+      },
+      "static": false,
+      "kind": "init",
+      "value": {
+        "type": "NumberTypeAnnotation",
+        "start": 548,
+        "end": 554,
+        "loc": {
+          "start": {
+            "line": 25,
+            "column": 18
+          },
+          "end": {
+            "line": 25,
+            "column": 24
+          }
+        }
+      },
+      "variance": null,
+      "optional": true
+    }
+  ],
+  "indexers": [],
+  "exact": false
+}
