@@ -10,7 +10,7 @@ export default class ArrayType<T> extends Type<Array<T>> {
     this.elementType = elementType;
   }
 
-  arbitrary(): any {
+  arbitrary(): Array<T> {
     // TODO(zach): random lengths
     const generated = new Array(5);
     for (let i = 0; i < 5; i += 1) {

@@ -4,6 +4,7 @@ import type {
   ObjectTypeAnnotation,
   FlowTypeAnnotation,
   ObjectTypeProperty,
+  TypeAlias
 } from "babel-flow-types";
 
 import {invariant} from "../utils";
@@ -23,9 +24,9 @@ import LiteralType from "./types/LiteralType";
 import BooleanType from "./types/BooleanType";
 import FunctionType from "./types/FunctionType";
 
-type FullType = <T: Type<any>>(T) => Type<any> | Type<any>;
+export function typeAliasToType(node: TypeAlias): Class
 
-export default function astToType(node: FlowTypeAnnotation): Type<any> {
+export function typeAnnotationToType(node: FlowTypeAnnotation): Class<Type<any>> {
   if (node.type === "ObjectTypeAnnotation") {
     const objectTypes = node.properties.reduce(
       (memo, prop: ObjectTypeProperty) => {
@@ -35,7 +36,7 @@ export default function astToType(node: FlowTypeAnnotation): Type<any> {
           key.type === "Identifier",
           "Got a key which isn't an identifier"
         );
-        memo[key.name] = [astToType(value), optional];
+        memo[key.name] = [typeAnnotationToType(value), optional];
         return memo;
       },
       {}
@@ -58,13 +59,13 @@ export default function astToType(node: FlowTypeAnnotation): Type<any> {
     return new UnionType([
       new NullType(),
       new VoidType(),
-      astToType(typeAnnotation),
+      typeAnnotationToType(typeAnnotation),
     ]);
   } else if (node.type === "BooleanTypeAnnotation") {
     return new BooleanType();
   } else if (node.type === "TupleTypeAnnotation") {
     const {types} = node;
-    return new TupleType(types.map(astToType));
+    return new TupleType(types.map(typeAnnotationToType));
   } else if (node.type === "StringLiteralTypeAnnotation") {
     // TODO(zach): value missing :( $FlowFixMe and PR
     const {value} = node;
@@ -88,17 +89,17 @@ export default function astToType(node: FlowTypeAnnotation): Type<any> {
   } else if (node.type === "FunctionTypeAnnotation") {
     const {params} = node;
     // explicitly uncurry fn
-    const paramTypes = params.map(t => astToType(t.typeAnnotation));
+    const paramTypes = params.map(t => typeAnnotationToType(t.typeAnnotation));
     return new FunctionType(
       new TupleType(paramTypes),
-      astToType(node.returnType)
+      typeAnnotationToType(node.returnType)
     );
   } else if (node.type === "UnionTypeAnnotation") {
     const {types} = node;
-    return new UnionType(types.map(astToType));
+    return new UnionType(types.map(typeAnnotationToType));
   } else if (node.type === "IntersectionTypeAnnotation") {
     const {types} = node;
-    return new IntersectionType(types.map(astToType));
+    return new IntersectionType(types.map(typeAnnotationToType));
   } else if (node.type === "ArrayTypeAnnotation") {
     throw new Error(
       'Unexpected node type, expected "GenericTypeAnnotation" with identifier "Array"'
@@ -113,7 +114,109 @@ export default function astToType(node: FlowTypeAnnotation): Type<any> {
         params.length === 1,
         "Got an array type with multiple type parameters"
       );
-      const elementType = astToType(params[0]);
+      const elementType = typeAnnotationToType(params[0]);
+      return new ArrayType(elementType);
+    }
+  } else if (node.type === "TypeofTypeAnnotation") {
+    throw new Error("Can't do `typeof`");
+  } else if (node.type === "ThisTypeAnnotation") {
+    throw new Error("Can't do `this`");
+  } else {
+    invariant(node.type !== "TypeAnnotation", "Found a bare type annotation");
+    (node.type: empty);
+  }
+  return new EmptyType();
+}
+
+export function typeAnnotationToString(node: FlowTypeAnnotation, typeParams: Map<string, Type<any>>): string {
+  if (node.type === "ObjectTypeAnnotation") {
+    const objectTypes = node.properties.reduce(
+      (memo, prop: ObjectTypeProperty) => {
+        // TODO(zach): option missing from ObjectTypeProperty $FlowFixMe and PR
+        const {key, value, optional} = prop;
+        invariant(
+          key.type === "Identifier",
+          "Got a key which isn't an identifier"
+        );
+        memo[key.name] = [typeAnnotationToType(value), optional];
+        return memo;
+      },
+      {}
+    );
+    return new ObjectType(objectTypes);
+  } else if (node.type === "NumberTypeAnnotation") {
+    return new NumberType();
+  } else if (node.type === "StringTypeAnnotation") {
+    return new StringType();
+    // TODO(zach): $FlowFixMe and PR
+  } else if (node.type === "EmptyTypeAnnotation") {
+    return new EmptyType();
+  } else if (node.type === "VoidTypeAnnotation") {
+    return new VoidType();
+    // TODO(zach): node type missing :( $FlowFixMe and PR
+  } else if (node.type === "NullLiteralTypeAnnotation") {
+    return new NullType();
+  } else if (node.type === "NullableTypeAnnotation") {
+    const {typeAnnotation} = node;
+    return new UnionType([
+      new NullType(),
+      new VoidType(),
+      typeAnnotationToType(typeAnnotation),
+    ]);
+  } else if (node.type === "BooleanTypeAnnotation") {
+    return new BooleanType();
+  } else if (node.type === "TupleTypeAnnotation") {
+    const {types} = node;
+    return new TupleType(types.map(typeAnnotationToType));
+  } else if (node.type === "StringLiteralTypeAnnotation") {
+    // TODO(zach): value missing :( $FlowFixMe and PR
+    const {value} = node;
+    return new LiteralType(value);
+  } else if (node.type === "BooleanLiteralTypeAnnotation") {
+    // TODO(zach): value missing :( $FlowFixMe and PR
+    const {value} = node;
+    return new LiteralType(value);
+    // TODO(zach): node type missing :( $FlowFixMe and PR
+  } else if (node.type === "NumberLiteralTypeAnnotation") {
+    const {value} = node;
+    return new LiteralType(value);
+  } else if (node.type === "AnyTypeAnnotation") {
+    return new LiteralType("__any__");
+  } else if (node.type === "MixedTypeAnnotation") {
+    return new LiteralType("__mixed__");
+  } else if (node.type === "NumericLiteralTypeAnnotation") {
+    throw new Error(
+      'Unexpected node type, expected "NumberLiteralTypeAnnotation"'
+    );
+  } else if (node.type === "FunctionTypeAnnotation") {
+    const {params} = node;
+    // explicitly uncurry fn
+    const paramTypes = params.map(t => typeAnnotationToType(t.typeAnnotation));
+    return new FunctionType(
+      new TupleType(paramTypes),
+      typeAnnotationToType(node.returnType)
+    );
+  } else if (node.type === "UnionTypeAnnotation") {
+    const {types} = node;
+    return new UnionType(types.map(typeAnnotationToType));
+  } else if (node.type === "IntersectionTypeAnnotation") {
+    const {types} = node;
+    return new IntersectionType(types.map(typeAnnotationToType));
+  } else if (node.type === "ArrayTypeAnnotation") {
+    throw new Error(
+      'Unexpected node type, expected "GenericTypeAnnotation" with identifier "Array"'
+    );
+  } else if (node.type === "GenericTypeAnnotation") {
+    const idNode = node.id;
+    invariant(idNode.type === "Identifier", "Got a non-Identifier id node");
+    if (idNode.name === "Array" || idNode.name === "$ReadOnlyArray") {
+      const {typeParameters} = node;
+      const {params} = typeParameters;
+      invariant(
+        params.length === 1,
+        "Got an array type with multiple type parameters"
+      );
+      const elementType = typeAnnotationToType(params[0]);
       return new ArrayType(elementType);
     }
   } else if (node.type === "TypeofTypeAnnotation") {

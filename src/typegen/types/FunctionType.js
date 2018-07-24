@@ -3,7 +3,6 @@
 import Type from "./Type";
 
 type Func<A, B> = A => B;
-type Arbitrary = <A>(Type<A>) => A;
 export default class FunctionType<A, B, TA: Type<A>, TB: Type<B>> extends Type<
   Func<A, B>
 > {

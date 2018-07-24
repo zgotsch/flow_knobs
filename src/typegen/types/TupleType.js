@@ -2,7 +2,7 @@
 
 import Type from "./Type";
 
-// TODO(zach): Not sure how to type this
+// TODO(zach): Not sure how to type this, maybe there's something to be done with $TupleMap
 export default class TupleType extends Type<any> {
   types: Array<Type<any>>;
 
